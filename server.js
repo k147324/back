@@ -193,5 +193,5 @@ wss.on("connection", (ws) => {
 
 const port = 3000;
 server.listen(port, () => {
-  console.log(`Server is running on http://3.26.82.12:${port}`);
+  console.log(`Server is running on http://54.252.113.192:${port}`);
 });

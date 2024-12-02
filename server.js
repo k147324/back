@@ -177,8 +177,15 @@ wss.on("connection", (ws) => {
     const localDateTime = now.toLocaleString();
     console.log(localDateTime);
     const query =
-      "INSERT INTO notice_record(notice_id,user_id,notice_info,time) VALUES(?,?,?,?)";
-    db.query(query, [generateRandomId(), data.user, data.data, localDateTime]);
+      "INSERT INTO notice_record(notice_id,user_id,notice_info,time,image) VALUES(?,?,?,?,?)";
+    const imageBuffer = Buffer.from(data.image, "base64");
+    db.query(query, [
+      generateRandomId(),
+      data.user,
+      data.data,
+      localDateTime,
+      imageBuffer,
+    ]);
     const notification = {
       type: "notification",
       data: data.data,
